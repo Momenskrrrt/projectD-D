@@ -1,0 +1,37 @@
+/api/2014/equipment/:index
+https://www.dnd5eapi.co/api/2014/equipment
+index, name, damage, range
+
+/api/2014/classes/:index
+https://www.dnd5eapi.co/api/2014/classes/
+
+index, name, proficiencies
+
+/api/2014/alignments/:index,
+index, desc
+
+/api/2014/languages/:index
+index,name
+
+/api/2014/proficiencies/:index
+index
+
+/api/2014/skills/:index
+index,desc
+
+/api/2014/classes/:index/subclasses
+index
+
+/api/2014/classes/:index/levels
+index, name, proficiencies
+
+/api/2014/damage-types/:index
+https://www.dnd5eapi.co/api/2014/damage-types
+index, desc
+
+/api/2014/races/:index
+https://www.dnd5eapi.co/api/2014/races/dwarf
+index,
+
+/api/2014/spells/:index
+index,
