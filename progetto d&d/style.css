@@ -1,0 +1,145 @@
+/* Font Google consigliato: UnifrakturCook per titoli, Lora per testo */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=UnifrakturCook:wght@700&display=swap');
+
+body {
+    background: linear-gradient(135deg, #2d1e2f 0%, #5e3c58 100%);
+    color: #f3e9dc;
+    font-family: 'Lora', serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-family: 'UnifrakturCook', cursive;
+    color: #e0b36a;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px #000, 0 0 2px #e0b36a;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.7em;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+a {
+    color: #e0b36a;
+    text-decoration: none;
+    transition: color 0.2s;
+    text-align: center;
+    display: inline-block;
+    margin: 0 8px;
+}
+a:hover {
+    color: #fffbe6;
+    text-shadow: 0 0 8px #e0b36a;
+}
+
+form {
+    background: rgba(44, 34, 54, 0.92);
+    border: 2px solid #e0b36a;
+    border-radius: 12px;
+    box-shadow: 0 0 16px #000a;
+    max-width: 420px;
+    margin: 30px auto;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    color: #e0b36a;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+    background: #3a2c3d;
+    color: #f3e9dc;
+    border: 1.5px solid #e0b36a;
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-family: 'Lora', serif;
+    transition: border 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border: 1.5px solid #fffbe6;
+    outline: none;
+    box-shadow: 0 0 8px #e0b36a;
+}
+
+input[type="submit"], button {
+    background: linear-gradient(90deg, #e0b36a 60%, #b88a44 100%);
+    color: #2d1e2f;
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 0;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0007;
+    transition: background 0.2s, color 0.2s;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+input[type="submit"]:hover, button:hover {
+    background: linear-gradient(90deg, #fffbe6 60%, #e0b36a 100%);
+    color: #5e3c58;
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid #e0b36a;
+    margin: 24px 0;
+}
+
+p, li {
+    font-size: 1.08em;
+    line-height: 1.5;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: #2d1e2f;
+}
+::-webkit-scrollbar-thumb {
+    background: #5e3c58;
+    border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+    form {
+        padding: 18px 8px;
+        max-width: 98vw;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+}

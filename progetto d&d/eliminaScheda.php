@@ -15,6 +15,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     // Elimina l'inventario associato alla scheda
     $conn->query("DELETE FROM inventario WHERE id_scheda = $scheda_id");
+    // Elimina l'inventario associato alla scheda
+    $conn->query("DELETE FROM incantesimi WHERE id_scheda = $scheda_id");
 
     // Elimina la scheda
     $conn->query("DELETE FROM scheda WHERE id = $scheda_id");

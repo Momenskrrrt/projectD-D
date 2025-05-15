@@ -13,13 +13,13 @@ if ($_SESSION["loggato"] != true) {
 $stmt = $conn->prepare("SELECT * FROM scheda");
 $stmt->execute();
 $result = $stmt->get_result();
-print_r($_SESSION);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Schede D&D</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Elenco Schede</h1>

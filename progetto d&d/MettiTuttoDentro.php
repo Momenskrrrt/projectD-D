@@ -16,7 +16,7 @@ $razza = $_GET['razza'];
 $classe = $_GET['classe'];
 $allineamento = $_GET['allineamento'];
 $lingua = $_GET['lingua'];
-$livello = $_GET['livello'];; // Puoi modificarlo se vuoi gestire il livello
+$livello = $_GET['livello'];   
 $id_utente = $_SESSION['id'];
 
 // Query di inserimento
@@ -67,7 +67,14 @@ if ($stmt->execute()) {
         $equip = $_GET["equipment$i"];
         $qnt = $_GET["qnt$i"];
         if ($equip != "") {
-            $conn->query("INSERT INTO inventario (nome, tipo, quantita, id_scheda) VALUES ('$equip', '', $qnt, $id_scheda)");
+            $conn->query("INSERT INTO inventario (nome, quantita, id_scheda) VALUES ('$equip', $qnt, $id_scheda)");
+        }
+    }
+    // Inserisci incantesimi
+    for ($i = 1; $i <= 4; $i++) {
+        $inc = $_GET["incantesimo$i"];
+        if ($inc != "") {
+            $conn->query("INSERT INTO incantesimi (nome, id_scheda) VALUES ('$inc', $id_scheda)");
         }
     }
     echo "Scheda inserita con successo!";

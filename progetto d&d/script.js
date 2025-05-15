@@ -250,6 +250,19 @@ window._data["equipment"] = getEquipment().then(() => {
     }
 });
 
+// Carica incantesimi per tutte le select incantesimo
+window._data["incantesimo"] = getSpellsList().then(() => {
+    let items = [];
+    if (spellsList && spellsList.results && Array.isArray(spellsList.results)) {
+        items = spellsList.results;
+    }
+    for (let i = 1; i <= 4; i++) {
+        populateSelect("incantesimo" + i, items);
+    }
+});
+
+
+
 
 // Carica proficiencies in base alla classe selezionata
 /**

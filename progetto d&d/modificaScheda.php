@@ -18,6 +18,11 @@ $stmt2 = $conn->prepare("SELECT * FROM inventario WHERE id_scheda = $_GET[id]");
 
 $stmt2->execute();
 $result2 = $stmt2->get_result();
+
+$stmt3 = $conn->prepare("SELECT * FROM incantesimi WHERE id_scheda = $_GET[id]");
+
+$stmt3->execute();
+$result3 = $stmt3->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +31,7 @@ $result2 = $stmt2->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -36,6 +42,7 @@ $result2 = $stmt2->get_result();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="style.css">
 
     </head>
 
@@ -68,7 +75,7 @@ $result2 = $stmt2->get_result();
             </select>
             <br><br>
 
-            <!-- <label for="incantesimo1">Incantesimo 1:</label>
+            <label for="incantesimo1">Incantesimo 1:</label>
         <select name="incantesimo1" id="incantesimo1" required>
             <option value="">Caricamento...</option>
         </select><br><br>
@@ -83,7 +90,7 @@ $result2 = $stmt2->get_result();
         <label for="incantesimo4">Incantesimo 4:</label>
         <select name="incantesimo4" id="incantesimo4" required>
             <option value="">Caricamento...</option> 
-        </select><br><br>-->
+        </select><br><br>
 
             <!-- Equipment selects -->
             <label>Equipment 1:</label>
@@ -208,6 +215,16 @@ $result2 = $stmt2->get_result();
         } else {
             echo 'Nessuna scheda trovata. <a href="creaScheda.php">Crea Scheda</a>';
         }
+        if ($result3->num_rows > 0) {
+            // Output dei dati di ogni riga
+            while ($row3 = $result3->fetch_assoc()) {
+                echo "<h2>" . $row3["nome"] . "</h2>";
+            }
+            $result3->data_seek(0); // Reset the pointer to the first row
+            echo "<hr>";
+        } else {
+            echo 'Nessuna scheda trovata. <a href="creaScheda.php">Crea Scheda</a>';
+        }
         //print_r($row); 
         
         ?>
@@ -236,7 +253,6 @@ $result2 = $stmt2->get_result();
             let preselectedRace = "<?php echo $row['razza']; ?>";
             let preselectedAlignment = "<?php echo $row['alignment']; ?>";
             let preselectedLanguage = "<?php echo $row['lingua']; ?>";
-            //let preselectedProficiencies = "";
             let preselectedName = "<?php echo $row['nomePersonaggio']; ?>";
             let preselectedLevel = "<?php echo $row['livello']; ?>";
             let preselectedStrength = "<?php echo $row['Strength']; ?>";
@@ -246,11 +262,14 @@ $result2 = $stmt2->get_result();
             let preselectedWisdom = "<?php echo $row['Wisdom']; ?>";
             let preselectedCharisma = "<?php echo $row['Charisma']; ?>";
             let equipments = [];
+            let incantesimi = [];
             <?php
             while ($row2 = $result2->fetch_assoc()) {
                 echo "equipments.push({ nome: '" . $row2['nome'] . "', quantita: '" . $row2['quantita'] . "' }); \n";
             }
-
+            while ($row3 = $result3->fetch_assoc()) {
+                echo "incantesimi.push({ nome: '" . $row3['nome'] . "' }); \n";
+            }
             ?>
             window._data["razza"].then(()=>{
                 preselectDropdown("razza", preselectedRace);
@@ -268,6 +287,7 @@ $result2 = $stmt2->get_result();
                     document.getElementById("qnt" + (index + 1)).value = element.quantita;
                 }
             });
+           
             window._data["lingueSelect"].then(()=>{
                 preselectDropdown("lingueSelect", preselectedLanguage);
             });
@@ -280,41 +300,13 @@ $result2 = $stmt2->get_result();
             document.getElementById("Wisdom").value = preselectedWisdom;
             document.getElementById("Charisma").value = preselectedCharisma;
 
+            window._data["incantesimi"].then(()=>{
+                for (let index = 0; index < incantesimi.length; index++) {
+                    const element = incantesimi[index];
+                    preselectDropdown("incantesimo" + (index + 1), element.nome);
+                }
+            });
            
-            // preselectDropdown("equipment1", equipments[0].nome);
-            // preselectDropdown("equipment2", equipments[1].nome);
-            // preselectDropdown("equipment3", equipments[2].nome);
-            // preselectDropdown("equipment4", equipments[3].nome);
-            // preselectDropdown("equipment5", equipments[4].nome);
-            // preselectDropdown("equipment6", equipments[5].nome);
-            // preselectDropdown("equipment7", equipments[6].nome);
-            // preselectDropdown("equipment8", equipments[7].nome);
-
-            // document.getElementById("classe").value = preselectedClass;
-            // document.getElementById("allineamento").value = preselectedAlignment;
-            // document.getElementById("lingue").value = preselectedLanguage;
-            // document.getElementById("proficiencies").value = preselectedProficiencies;
-            // document.getElementById("Nome").value = preselectedName;
-            // document.getElementById("livello").value = preselectedLevel;
-            // document.getElementById("Strength").value = preselectedStrength;
-            // document.getElementById("Dexterity").value = preselectedDexterity;
-            // document.getElementById("Constitution").value = preselectedConstitution;
-            // document.getElementById("Intelligence").value = preselectedIntelligence;
-            // document.getElementById("Wisdom").value = preselectedWisdom;
-            // document.getElementById("Charisma").value = preselectedCharisma;
-            // for (let index = 0; index < array.length; index++) {
-            //     const element = array[index];
-
-            // }
-
-            // document.getElementById("equipment1").value = preselectedEquipment1;
-            // document.getElementById("equipment2").value = preselectedEquipment2;
-            // document.getElementById("equipment3").value = preselectedEquipment3;
-            // document.getElementById("equipment4").value = preselectedEquipment4;
-            // document.getElementById("equipment5").value = preselectedEquipment5;
-            // document.getElementById("equipment6").value = preselectedEquipment6;
-            // document.getElementById("equipment7").value = preselectedEquipment7;
-            // document.getElementById("equipment8").value = preselectedEquipment8;
 
 
 
