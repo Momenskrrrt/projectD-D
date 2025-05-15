@@ -3,7 +3,7 @@ require_once("conn.php");
 if (!isset($_SESSION)) {
     session_start();
 }
-if ($_SESSION["loggato"] != true) {
+if (isset($_SESSION["loggato"]) && $_SESSION["loggato"] != true) {
     header("Location: index.php");
     exit;
 }

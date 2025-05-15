@@ -4,10 +4,11 @@ if (!isset($_SESSION)) {
     session_start();
     # code...
 }
-if (isset($_SESSION["loggato"]) && $_SESSION["loggato"] == true) {
-    header("Location: home.php");
+if (isset($_SESSION["loggato"]) && $_SESSION["loggato"] != true) {
+    header("Location: index.php");
     exit;
 }
+
 
 // Recupera l'ID della scheda da eliminare
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
