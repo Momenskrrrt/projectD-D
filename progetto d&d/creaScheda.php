@@ -4,10 +4,10 @@ if (!isset($_SESSION)) {
     session_start();
     # code...
 } 
-if ($_SESSION["loggato"] != true) {
-        header("Location: index.php");
-        exit;
-    }
+if (isset($_SESSION["loggato"]) && $_SESSION["loggato"] == true) {
+    header("Location: home.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

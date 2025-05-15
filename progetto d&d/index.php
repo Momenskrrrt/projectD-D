@@ -22,7 +22,7 @@ if (isset($_SESSION["loggato"]) && $_SESSION["loggato"] == true) {
     
     <form action="gestioneLogin.php" method="get">
         <input type="text" name="username" id="">
-        <input type="text" name="password" id="">
+        <input type="password" name="password" id="">
         <input type="submit" value="Login">
         <a href="register.php">Registrati</a>
     </form>

@@ -3,6 +3,10 @@ require_once("conn.php");
 if (!isset($_SESSION)) {
     session_start();
 }
+if (isset($_SESSION["loggato"]) && $_SESSION["loggato"] == true) {
+    header("Location: home.php");
+    exit;
+}
 
 $errore = "";
 if (isset($_POST["username"]) && isset($_POST["password"])) {

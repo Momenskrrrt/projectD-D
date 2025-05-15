@@ -4,10 +4,10 @@ if (!isset($_SESSION)) {
     session_start();
     # code...
 } 
-if ($_SESSION["loggato"] != true) {
-        header("Location: index.php");
-        exit;
-    }
+if (isset($_SESSION["loggato"]) && $_SESSION["loggato"] == true) {
+    header("Location: home.php");
+    exit;
+}
 
 // Utilizzo della prepared statement
 $stmt = $conn->prepare("SELECT * FROM scheda");
